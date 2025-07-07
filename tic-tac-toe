@@ -1,0 +1,28 @@
+package ui;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class XandO {
+
+    JFrame frame;
+    JPanel welcomePanel, gamePanel, gridPanel;
+    JTextField player1Field, player2Field;
+    JLabel turnLabel;
+    JButton[] buttons = new JButton[9];
+    ArrayList<Integer> playerOne = new ArrayList<>();
+    ArrayList<Integer> playerTwo = new ArrayList<>();
+    boolean isPlayerOneTurn = true;
+    String player1Name = "Player 1";
+    String player2Name = "Player 2";
+
+    public static void main(String[] args) {
+        new XandO();
+    }
+
+    public XandO() {
+        WelcomeScreen();
+    }
