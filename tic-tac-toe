@@ -53,3 +53,32 @@ void WelcomeScreen() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
+
+void startGame() {
+        player1Name = player1Field.getText().trim().isEmpty() ? "Player 1" : player1Field.getText().trim();
+        player2Name = player2Field.getText().trim().isEmpty() ? "Player 2" : player2Field.getText().trim();
+
+        frame.remove(welcomePanel);
+        drawGameBoard();
+    }
+
+    void drawGameBoard() {
+        gamePanel = new JPanel(new BorderLayout());
+        turnLabel = new JLabel(player1Name + "'s turn (X)", SwingConstants.CENTER);
+        turnLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        turnLabel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
+
+        gridPanel = new JPanel(new GridLayout(3, 3, 5, 5));
+        gridPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        for (int i = 0; i < 9; i++) {
+            JButton btn = new JButton("");
+            btn.setFont(new Font("Arial", Font.BOLD, 40));
+            btn.setBackground(Color.BLACK); // black background
+            btn.setForeground(Color.WHITE); // white "X" or "O"
+            btn.setFocusPainted(false);
+            int index = i + 1;
+            buttons[i] = btn;
+            btn.addActionListener(e -> handleMove(btn, index));
+            gridPanel.add(btn);
+        }
