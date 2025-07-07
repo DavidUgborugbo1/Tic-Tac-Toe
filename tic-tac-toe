@@ -122,3 +122,38 @@ JButton resetBtn = new JButton("Restart");
             isPlayerOneTurn = !isPlayerOneTurn;
         }
     }
+
+
+    boolean checkWin() {
+        int[][] winPatterns = {
+                {1,2,3}, {4,5,6}, {7,8,9},
+                {1,4,7}, {2,5,8}, {3,6,9},
+                {1,5,9}, {3,5,7}
+        };
+
+        ArrayList<Integer> currentPlayer = isPlayerOneTurn ? playerOne : playerTwo;
+        for (int[] pattern : winPatterns) {
+            if (currentPlayer.containsAll(Arrays.asList(pattern[0], pattern[1], pattern[2]))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    void resetGame() {
+        playerOne.clear();
+        playerTwo.clear();
+        isPlayerOneTurn = true;
+        turnLabel.setText(player1Name + "'s turn (X)");
+        for (JButton btn : buttons) {
+            btn.setText("");
+            btn.setEnabled(true);
+        }
+    }
+
+    void disableButtons() {
+        for (JButton btn : buttons) {
+            btn.setEnabled(false);
+        }
+    }
+}
