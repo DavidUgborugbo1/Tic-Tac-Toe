@@ -82,3 +82,43 @@ void startGame() {
             btn.addActionListener(e -> handleMove(btn, index));
             gridPanel.add(btn);
         }
+
+JButton resetBtn = new JButton("Restart");
+        resetBtn.setBackground(Color.BLACK);
+        resetBtn.setForeground(Color.WHITE);
+        resetBtn.addActionListener(e -> resetGame());
+
+        gamePanel.add(turnLabel, BorderLayout.NORTH);
+        gamePanel.add(gridPanel, BorderLayout.CENTER);
+        gamePanel.add(resetBtn, BorderLayout.SOUTH);
+
+        frame.add(gamePanel);
+        frame.setSize(400, 500);
+        frame.setVisible(true);
+        frame.revalidate();
+        frame.repaint();
+    }
+
+    void handleMove(JButton btn, int index) {
+        if (!btn.getText().equals("")) return;
+
+        if (isPlayerOneTurn) {
+            btn.setText("X");
+            playerOne.add(index);
+            turnLabel.setText(player2Name + "'s turn (O)");
+        } else {
+            btn.setText("O");
+            playerTwo.add(index);
+            turnLabel.setText(player1Name + "'s turn (X)");
+        }
+
+        if (checkWin()) {
+            String winner = isPlayerOneTurn ? player1Name : player2Name;
+            JOptionPane.showMessageDialog(frame, winner + " wins!");
+            disableButtons();
+        } else if (playerOne.size() + playerTwo.size() == 9) {
+            JOptionPane.showMessageDialog(frame, "It's a draw!");
+        } else {
+            isPlayerOneTurn = !isPlayerOneTurn;
+        }
+    }
