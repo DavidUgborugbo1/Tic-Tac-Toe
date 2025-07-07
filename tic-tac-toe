@@ -26,3 +26,30 @@ public class XandO {
     public XandO() {
         WelcomeScreen();
     }
+
+void WelcomeScreen() {
+        frame = new JFrame("Welcome to X and O");
+        welcomePanel = new JPanel(new GridLayout(4, 2, 10, 10));
+        welcomePanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        welcomePanel.add(new JLabel("Enter Player 1 Name:"));
+        player1Field = new JTextField();
+        welcomePanel.add(player1Field);
+
+        welcomePanel.add(new JLabel("Enter Player 2 Name:"));
+        player2Field = new JTextField();
+        welcomePanel.add(player2Field);
+
+        JButton startButton = new JButton("Start Game");
+        startButton.setBackground(Color.BLACK);
+        startButton.setForeground(Color.WHITE);
+        startButton.addActionListener(e -> startGame());
+
+        welcomePanel.add(new JLabel()); // filler
+        welcomePanel.add(startButton);
+
+        frame.add(welcomePanel);
+        frame.setSize(400, 250);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
