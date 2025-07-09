@@ -6,7 +6,7 @@ The game announces a winner or a draw and includes a restart button.
 
 ---
 
-##🎮 Features
+##🎮 FEATURES
 
 - Two-player mode (Player 1 vs Player 2)
 - A Welcome screen for entering player names
