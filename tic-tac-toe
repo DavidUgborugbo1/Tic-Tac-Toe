@@ -45,7 +45,7 @@ void WelcomeScreen() {
         startButton.setForeground(Color.WHITE);
         startButton.addActionListener(e -> startGame());
 
-        welcomePanel.add(new JLabel()); // filler
+        welcomePanel.add(new JLabel());
         welcomePanel.add(startButton);
 
         frame.add(welcomePanel);
@@ -74,8 +74,8 @@ void startGame() {
         for (int i = 0; i < 9; i++) {
             JButton btn = new JButton("");
             btn.setFont(new Font("Arial", Font.BOLD, 40));
-            btn.setBackground(Color.BLACK); // black background
-            btn.setForeground(Color.WHITE); // white "X" or "O"
+            btn.setBackground(Color.BLACK);
+            btn.setForeground(Color.WHITE);
             btn.setFocusPainted(false);
             int index = i + 1;
             buttons[i] = btn;
